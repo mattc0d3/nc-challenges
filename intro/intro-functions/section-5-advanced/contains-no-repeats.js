@@ -2,6 +2,13 @@ const { check, runTest } = require("../test-api/index");
 
 function containsNoRepeats(str) {
   // This function should take a string as its argument and return true if each character appears only once and false otherwise
+  const seen = {}
+  let unique = true
+  str.split("").forEach(char => {
+    if (seen[char] === undefined) seen[char] = true
+    else unique = false
+  })
+  return unique
 }
 
 runTest("containsNoRepeats() returns true for an empty string", function () {
