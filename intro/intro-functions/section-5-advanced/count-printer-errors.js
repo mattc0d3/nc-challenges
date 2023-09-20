@@ -21,8 +21,8 @@ countPrinterErrors(control) should return "8/22"
 
  */
 
-function countPrinterErrors() {
-  // your solution here
+function countPrinterErrors(string) {
+  return string.split("").filter(char => /[^a-m]/i.test(char)).length + "/" + string.length
 }
 
 runTest("countPrinterErrors() should return a string", function () {
