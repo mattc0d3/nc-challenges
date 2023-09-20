@@ -10,7 +10,13 @@ See here for more details: https://www.grammarly.com/blog/how-to-write-ordinal-n
 */
 
 function getOrdinalSuffix(num) {
-  // your solution here
+  if (num > 3 && num < 21) return "th"
+  switch (num % 10) {
+    case 1: return "st"
+    case 2: return "nd"
+    case 3: return "rd"
+    default: return "th"
+  }
 }
 
 runTest("getOrdinalSuffix() returns 'st' when given 1", function () {
