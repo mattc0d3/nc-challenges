@@ -1,5 +1,5 @@
 const { check, runTest } = require("../../test-api/index.js");
-
+const isRightAngledTriangle = require("./utils/isRightAngledTriangle.js")
 /* 
 Complete the function below. It takes an object with contains the length of three sides of a triangle
 Using the appropriate util function, return the string 'This is a right angled triangle' or 'This is a normal triangle', as appropriate
@@ -13,8 +13,9 @@ NOTE: You will need to adjust the util function in this example, by requiring in
 
 */
 
-function checkRightAngledTriangle(triangleAngles) {
+function checkRightAngledTriangle({ sideA, sideB, sideC }) {
   // remember to require in at least 1 util function help you solve this problem!
+  return isRightAngledTriangle(sideA, sideB, sideC) ? "This is a right angled triangle" : "This is a normal triangle"
 }
 
 runTest("checkRightAngledTriangle() should return appropriate string message", function () {

@@ -4,3 +4,5 @@ function getArrayTotal(arr) {
   }, 0);
   return total;
 }
+
+module.exports = getArrayTotal

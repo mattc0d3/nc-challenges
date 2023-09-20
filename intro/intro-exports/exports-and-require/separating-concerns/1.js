@@ -1,5 +1,5 @@
 const { check, runTest } = require("../../test-api/index.js");
-
+const convertToPounds = require("./utils/convertToPounds.js")
 /* 
 The function should take two objects which provide the cost, currency and exchange rate of an item
 Return the total cost of the two items, in pounds, rounded to two decimal places
@@ -24,6 +24,7 @@ sumPurchases(item1, item2)
 
 function sumPurchases(item1, item2) {
   // remember to require in at least 1 util function help you solve this problem!
+  return Number((convertToPounds(item1.cost, item1.exchangeRate) + convertToPounds(item2.cost, item2.exchangeRate)).toFixed(2))
 }
 
 runTest("sumPurchases() returns sum total of item conversions", function () {
