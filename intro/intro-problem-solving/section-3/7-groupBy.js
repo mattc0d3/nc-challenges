@@ -29,7 +29,14 @@ The function returns an object where the keys represent the matching values and 
   ]
 }
 */
-function groupBy(array, key) {}
+function groupBy(array, key) {
+  const result = {}
+  array.forEach(element => {
+    if (result[element[key]] === undefined) result[element[key]] = [element]
+    else result[element[key]].push(element)
+  });
+  return result
+}
 
 console.log("groupBy()");
 
