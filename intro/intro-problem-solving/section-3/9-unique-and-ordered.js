@@ -5,7 +5,15 @@ Implement a function which takes as an argument a sequence and returns a list of
 
 The function should be able to to work with both strings and arrays, and should return an array.
 */
-function uniqueAndOrdered() {}
+function uniqueAndOrdered(sequence) {
+  let lastSeen
+  if (typeof sequence === "string") sequence = sequence.split("")
+  return sequence.filter(element => {
+    let isUnique = element !== lastSeen
+    lastSeen = element
+    return isUnique
+  })
+}
 
 console.log("uniqueAndOrdered");
 
@@ -15,7 +23,7 @@ runTest("returns unique ordered numbers from an array", function () {
   ]);
 });
 
-skipTest("returns unique ordered letters from a string", function () {
+runTest("returns unique ordered letters from a string", function () {
   check(uniqueAndOrdered("nnoorrtthhccooddeerrss")).isEqualTo([
     "n",
     "o",
@@ -31,7 +39,7 @@ skipTest("returns unique ordered letters from a string", function () {
   ]);
 });
 
-skipTest("is case sensitive for strings", function () {
+runTest("is case sensitive for strings", function () {
   check(uniqueAndOrdered("AaAAABBBCCCc")).isEqualTo([
     "A",
     "a",
