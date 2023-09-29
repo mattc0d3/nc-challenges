@@ -5,7 +5,9 @@ const { check, runTest, skipTest } = require("../test-api/index.js");
   A palindrome is a word that is spelled the same way backwards.
   E.g. ['foo', 'racecar', 'pineapple', 'porcupine', 'tacocat'] =>  ['racecar', 'tacocat']
 */
-function getPalindromes(words) {}
+function getPalindromes(words) {
+  return words.filter(word => word === word.split("").reverse().join(""))
+}
 
 console.log("getPalindromes()");
 
@@ -13,7 +15,7 @@ runTest("returns [] when passed []", function () {
   check(getPalindromes([])).isEqualTo([]);
 });
 
-skipTest("identifies palindromes", function () {
+runTest("identifies palindromes", function () {
   check(getPalindromes(["racecar"])).isEqualTo(["racecar"]);
   check(getPalindromes(["racecar", "racecar"])).isEqualTo([
     "racecar",
@@ -21,7 +23,7 @@ skipTest("identifies palindromes", function () {
   ]);
 });
 
-skipTest("ignores non-palindromes", function () {
+runTest("ignores non-palindromes", function () {
   check(getPalindromes(["racecar", "kayak", "tacocat"])).isEqualTo([
     "racecar",
     "kayak",
@@ -32,6 +34,6 @@ skipTest("ignores non-palindromes", function () {
   ]);
 });
 
-skipTest("returns [] when passed no palindromes", function () {
+runTest("returns [] when passed no palindromes", function () {
   check(getPalindromes(["pineapple", "watermelon", "pony"])).isEqualTo([]);
 });
